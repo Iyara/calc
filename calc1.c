@@ -17,11 +17,32 @@ int main()
         printf("Enter operator and number: ");
         fgets(line, sizeof(line), stdin);
         sscanf(line, "%c %d", &operat, &value);
-
+        
+        if ((operat == 'q') || (operat == 'Q')) {
+            break;
+        }
+        
         if (operat == '+') {
             result += value;
-        } else {
+        }
+        else if (operat == '-') {
+            result -= value;
+        } 
+        else if (operat == '*') {
+            result *= value;
+        } 
+        else if (operat == '/') {
+            if (value == 0) {
+                printf("Error: cannot divide by zero\n");
+                printf("operation ignored\n");
+            }
+            else
+                result /= value;
+            
+        } 
+        else {
             printf("Unknown operator %c\n", operat);
         }
     }
+    return (0);
 }
